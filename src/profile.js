@@ -30,7 +30,7 @@ if(token){
     }
     useEffect(()=>{
         getOrder()
-    },)
+    },[])
 
 return(
     <>
