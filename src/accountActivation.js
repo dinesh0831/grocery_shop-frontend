@@ -24,7 +24,7 @@ function AccountActivation() {
     }
     useEffect(() => {
         getData()
-    }, )
+    },[] )
     const navigate=useNavigate()
     const handleSubmit =async () => {
         const token = jwt.decode(params.token)
