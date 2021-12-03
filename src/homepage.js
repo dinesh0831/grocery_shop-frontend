@@ -83,7 +83,7 @@ function Home(props) {
                 <CardMedia
                   component="img"
                   height="140"
-                  image={`${Url.backendUrl}/${items.photos.filename}`}
+                  image={`${Url.backendUrl}/photo/${items.photos.filename}`}
                   alt="name of product"
                 />
                 <CardContent >
