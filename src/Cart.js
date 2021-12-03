@@ -72,7 +72,7 @@ const orderNow=async()=>{
  
    useEffect(()=>{
        getItem()
-   },[])
+   },)
 
 return(
     <>
