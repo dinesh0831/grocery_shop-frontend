@@ -143,17 +143,7 @@ console.log(users)
 
             </Box>
 
-            <>
-                <Button onClick={toggleDrawer("left", true)}><MenuIcon sx={{ fontSize: 24, color: "white", }} /></Button>
-                <SwipeableDrawer
-                    anchor={"left"}
-                    open={state["left"]}
-                    onClose={toggleDrawer("left", false)}
-                    onOpen={toggleDrawer("left", true)}
-                >
-                    {list("left")}
-                </SwipeableDrawer>
-            </>
+           
 
         </div>
 
