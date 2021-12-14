@@ -8,6 +8,7 @@ class Register extends React.Component{
     constructor(){
         super()
         this.state={
+            message:"",
             name:"",
             mobileno:"",
             email:"",
@@ -16,19 +17,21 @@ class Register extends React.Component{
                 houseNo_street:"",
                 village:"",
                 city:"",
-                pin:""
+                pin:"",
+                
             
 
         }
     }
     RegisterUsers=async()=>{
        const {name,mobileno,email,password,houseNo_street,village,city,pin}=this.state
-       const response=await axios.post(`${Url.backendUrl}/users/registerVerification`,{
+       const {data}=await axios.post(`${Url.backendUrl}/users/registerVerification`,{
         name,mobileno,email,password,address:{
             houseNo_street,village,city,pin
         }
        })
-        console.log(response)
+       console.log(data.message)
+       this.setState({message:data.message})
 
     }
 
@@ -60,10 +63,14 @@ class Register extends React.Component{
                  <TextField size="small" sx={{ margin: 2 }} variant="outlined" label="City" type="string" name="city" value={this.state.city}  onChange={this.handleChange} ></TextField>
                  <TextField size="small" sx={{ margin: 2 }} variant="outlined" label="Pin" type="string" name="pin" value={this.state.pin}  onChange={this.handleChange} ></TextField>
                  <Box sx={{display:"flex", justifyContent:"center",right:10}}>
+                 <Typography sx={{color:"red"}}>{this.state.message}</Typography>
+                 </Box>
+                 
+                 <Box sx={{display:"flex", justifyContent:"center",right:10}}>
                  <button>submit</button>
                  </Box>
-                 <Box>If you  have account
-                 <Link style={{margin:5}} to="/login">click here</Link>to register
+                 <Box><Typography sx={{textAlign:"center"}}>If you  have account
+                 <Link style={{margin:5}} to="/login">click here</Link>to register</Typography>
                  </Box>
                  </Grid>
                  

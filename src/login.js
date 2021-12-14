@@ -9,7 +9,7 @@ class Login extends React.Component{
     constructor(){
         super()
         this.state={
-            
+            message:"",
             email:"",
             password:""
            
@@ -58,13 +58,17 @@ class Login extends React.Component{
                  <Box sx={{display:"flex", justifyContent:"flex-end",}}>
                  <Link style={{margin:5}} to="/forgot_password">Forget Password</Link>
                  </Box>
+                 <Box sx={{display:"flex", justifyContent:"center"}}>
+                     <Typography sx={{color:"red"}}>{this.state.message}</Typography>
+                 </Box>
                  <Box sx={{display:"flex", justifyContent:"center",}}>
                      
                  <button>submit</button>
                
                  </Box>
-                 <Box>If you don't have account
+                 <Box><Typography sx={{textAlign:"center"}}>If you don't have account
                  <Link style={{margin:5}} to="/register">click here</Link>to register
+                </Typography>
                  </Box>
                 
                  </Grid>
