@@ -74,7 +74,7 @@ function Home(props) {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Menubar/>
-      <Grid container spacing={2} sx={{ display:"flex",justifyContent:"center" }}>
+      <Grid container spacing={2} sx={{ display:"flex",justifyContent:"center",marginTop:5 }}>
         {product.map(items => {
 
           return (
