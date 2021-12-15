@@ -57,7 +57,7 @@ class Register extends React.Component{
                  <TextField size="small" sx={{ margin: 2 }} variant="outlined" label="Name" type="string" name="name" value={this.state.name}  onChange={this.handleChange} ></TextField>
                  <TextField size="small" sx={{ margin: 2 }} variant="outlined" label="email" type="string" name="email" value={this.state.email}  onChange={this.handleChange} ></TextField>
                  <TextField size="small" sx={{ margin: 2 }} variant="outlined" label="Mobile No" type="string" name="mobileno" value={this.state.mobileno}  onChange={this.handleChange} ></TextField>
-                 <TextField size="small" sx={{ margin: 2 }} variant="outlined" label="Password" type="string" name="password" value={this.state.password}  onChange={this.handleChange} ></TextField>
+                 <TextField size="small" sx={{ margin: 2 }} variant="outlined" label="Password" type="password" name="password" value={this.state.password}  onChange={this.handleChange} ></TextField>
                  <TextField size="small" sx={{ margin: 2 }} variant="outlined" label="House No & Street" type="string" name="houseNo_street" value={this.state.houseNo_street}  onChange={this.handleChange} ></TextField>
                  <TextField size="small" sx={{ margin: 2 }} variant="outlined" label="village/Town" type="string" name="village" value={this.state.village}  onChange={this.handleChange} ></TextField>
                  <TextField size="small" sx={{ margin: 2 }} variant="outlined" label="City" type="string" name="city" value={this.state.city}  onChange={this.handleChange} ></TextField>
