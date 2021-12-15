@@ -54,7 +54,7 @@ class Login extends React.Component{
                 <Grid sx={{margin:"5%",position:"absolute",backgroundColor:"white",width:300,borderRadius:5,padding:2,}} item>
                 <Typography sx={{fontSize:24,fontWeight:"bold"}}>Login</Typography>
                  <TextField size="small" sx={{ margin: 2 }} variant="outlined" label="Email" type="string" name="email" value={this.state.email}  onChange={this.handleChange} ></TextField>
-                 <TextField size="small" sx={{ margin: 2 }} variant="outlined" label="Password" type="string" name="password" value={this.state.password}  onChange={this.handleChange} ></TextField>
+                 <TextField size="small" sx={{ margin: 2 }} variant="outlined" label="Password" type="password" name="password" value={this.state.password}  onChange={this.handleChange} ></TextField>
                  <Box sx={{display:"flex", justifyContent:"flex-end",}}>
                  <Link style={{margin:5}} to="/forgot_password">Forget Password</Link>
                  </Box>
