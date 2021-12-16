@@ -25,13 +25,17 @@ class Register extends React.Component{
     }
     RegisterUsers=async()=>{
        const {name,mobileno,email,password,houseNo_street,village,city,pin}=this.state
-       const {data}=await axios.post(`${Url.backendUrl}/users/registerVerification`,{
+       const {data}=await axios.post(`${Url.backendUrl}/users/register`,{
         name,mobileno,email,password,address:{
             houseNo_street,village,city,pin
         }
        })
-       console.log(data.message)
+      
        this.setState({message:data.message})
+       if (data.message==="*User successfully Registered")
+       {
+        window.location.href="/login"
+       }
 
     }
 
@@ -63,7 +67,7 @@ class Register extends React.Component{
                  <TextField size="small" sx={{ margin: 2 }} variant="outlined" label="City" type="string" name="city" value={this.state.city}  onChange={this.handleChange} ></TextField>
                  <TextField size="small" sx={{ margin: 2 }} variant="outlined" label="Pin" type="string" name="pin" value={this.state.pin}  onChange={this.handleChange} ></TextField>
                  <Box sx={{display:"flex", justifyContent:"center",right:10}}>
-                 <Typography sx={{color:"red",textAlign:"center"}}>{this.state.message}</Typography>
+                 <Typography sx={{color:"red"}}>{this.state.message}</Typography>
                  </Box>
                  
                  <Box sx={{display:"flex", justifyContent:"center",right:10}}>
