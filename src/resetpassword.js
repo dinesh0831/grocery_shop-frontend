@@ -62,7 +62,7 @@ let navigate=useNavigate ()
 
                 </Grid>
             </form>
-            <img style={{ height: 600, width: "100%" }} alt={"reset"} src={login} />
+            <img style={{ height: "auto", width: "100%" }} alt={"reset"} src={login} />
         </Grid>
     )
 }
