@@ -36,7 +36,7 @@ const handleChange=({target:{name,value}})=>{
 
                 </Grid>
             </form>
-            <img style={{ height: 600, width: "100%" }} alt="login" src={login} />
+            <img style={{ height: "auto", width: "100%" }} alt="login" src={login} />
         </Grid>
     )
 }
