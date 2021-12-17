@@ -96,7 +96,7 @@ console.log(users)
                     <ListItemText primary={"Orders"} />
                 </ListItem>
                 
-                <ListItem button component={Link} to="/Mycart">
+                <ListItem button component={Link} to="/cart">
                     <ListItemIcon>
                        <ShoppingCartSharpIcon/>
                     </ListItemIcon>
