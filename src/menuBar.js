@@ -89,12 +89,7 @@ console.log(users)
                     <ListItemText primary={"Home"} />
                 </ListItem>
                 
-                <ListItem button component={Link} to="/order">
-                    <ListItemIcon>
-                       <ShoppingBagIcon/>
-                    </ListItemIcon>
-                    <ListItemText primary={"Orders"} />
-                </ListItem>
+             
                 
                 <ListItem button component={Link} to="/cart">
                     <ListItemIcon>
