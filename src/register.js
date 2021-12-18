@@ -55,7 +55,7 @@ class Register extends React.Component{
         return (
            
             <Grid sx={{display: "flex", justifyContent: "center", alignItems: "center"}}>
-              <Grid sx={{position: "absolute", backgroundColor: "white", borderRadius: 5, padding: 2,width:"auto",maxWidth:"55%"}}>
+              <Grid sx={{position: "absolute", backgroundColor: "white", borderRadius: 5, padding: 2,width:"auto",maxWidth:550}}>
             <form  onSubmit={this.handleSubmit} style={{}}>
               
                     <Typography sx={{fontSize:24,fontWeight:"bold"}}>Register</Typography>
