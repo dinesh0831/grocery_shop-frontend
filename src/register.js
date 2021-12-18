@@ -54,9 +54,10 @@ class Register extends React.Component{
     render(){
         return (
            
-            <Grid sx={{overflow:"hidden",}}>
+            <Grid sx={{display: "flex", justifyContent: "center", alignItems: "center"}}>
+              <Grid sx={{position: "absolute", backgroundColor: "white", borderRadius: 5, padding: 2,width:"auto",maxWidth:"55%"}}>
             <form  onSubmit={this.handleSubmit} style={{}}>
-                <Grid sx={{margin:"5%",position:"absolute",backgroundColor:"white",width:550,borderRadius:5,padding:2,alignSelf:"center"}}>
+              
                     <Typography sx={{fontSize:24,fontWeight:"bold"}}>Register</Typography>
                  <TextField size="small" sx={{ margin: 2 }} variant="outlined" label="Name" type="string" name="name" value={this.state.name}  onChange={this.handleChange} ></TextField>
                  <TextField size="small" sx={{ margin: 2 }} variant="outlined" label="email" type="string" name="email" value={this.state.email}  onChange={this.handleChange} ></TextField>
@@ -76,9 +77,10 @@ class Register extends React.Component{
                  <Box><Typography sx={{textAlign:"center"}}>If you  have account
                  <Link style={{margin:5}} to="/login">click here</Link>to register</Typography>
                  </Box>
-                 </Grid>
+                
                  
             </form>
+ </Grid>
             <img style={{height:"auto",width:"100%"}} alt="register" src={register}/> 
             </Grid>
              
