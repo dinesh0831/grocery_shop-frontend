@@ -21,9 +21,10 @@ const handleChange=({target:{name,value}})=>{
 
    }
     return (
-        <Grid sx={{ overflow: "hidden", }}>
+        <Grid sx={{ display: "flex", justifyContent: "center", alignItems: "center"  }}>
+           <Grid sx={{ margin: "5%", position: "absolute", backgroundColor: "white", width: 300, borderRadius: 5, padding: 2, }} item>
             <form onSubmit={handleSubmit} >
-                <Grid sx={{ margin: "5%", position: "absolute", backgroundColor: "white", width: 300, borderRadius: 5, padding: 2, }} item>
+                
                     <Typography sx={{ fontSize: 24, fontWeight: "bold" }}>Forget password</Typography>
                     <TextField size="small" sx={{ margin: 2 }} variant="outlined" label="Email" type="string" name="email" value={email} onChange={handleChange} ></TextField>
                     <Typography sx={{ fontSize: 24, fontWeight: "bold" }}>{message}</Typography>
@@ -34,8 +35,9 @@ const handleChange=({target:{name,value}})=>{
 
                     </Box>
 
-                </Grid>
+               
             </form>
+ </Grid>
             <img style={{ height: "auto", width: "100%" }} alt="login" src={login} />
         </Grid>
     )
