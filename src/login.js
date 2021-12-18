@@ -49,9 +49,10 @@ class Login extends React.Component{
 
     render(){
         return (
-            <Grid sx={{overflow:"hidden",}}>
+            <Grid sx={{display: "flex", justifyContent: "center", alignItems: "center"}}>
+            <Grid sx={{ position: "absolute", backgroundColor: "white", borderRadius: 5, padding: 2,width:"auto" }} item>
             <form  onSubmit={this.handleSubmit} >
-                <Grid sx={{margin:"5%",position:"absolute",backgroundColor:"white",width:"20%",borderRadius:5,padding:2,}} item>
+                
                 <Typography sx={{fontSize:24,fontWeight:"bold"}}>Login</Typography>
                  <TextField size="small" sx={{ margin: 2 }} variant="outlined" label="Email" type="string" name="email" value={this.state.email}  onChange={this.handleChange} ></TextField>
                  <TextField size="small" sx={{ margin: 2 }} variant="outlined" label="Password" type="password" name="password" value={this.state.password}  onChange={this.handleChange} ></TextField>
@@ -71,9 +72,10 @@ class Login extends React.Component{
                 </Typography>
                  </Box>
                 
-                 </Grid>
+                
 
             </form>
+ </Grid>
             <img style={{height:"auto",width:"100%"}} alt="login" src={login}/> 
             </Grid>
         )
