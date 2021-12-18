@@ -49,7 +49,7 @@ let navigate=useNavigate ()
         <Grid sx={{  display: "flex", justifyContent: "center", alignItems: "center"  }}>
          <Grid sx={{position: "absolute", backgroundColor: "white", borderRadius: 5, padding: 2,width:"auto" ,maxWidth:300 }} item>
             <form onSubmit={handleSubmit} >
-                <Grid sx={{ margin: "5%", position: "absolute", backgroundColor: "white", width: 500, borderRadius: 5, padding: 2, }} item>
+                
                     <Typography sx={{ fontSize: 24, fontWeight: "bold" }}>Reset password</Typography>
                     <Typography sx={{ fontSize: 24, fontWeight: "bold" }}>Email:{otp.email}</Typography>
                     <TextField size="small" sx={{ margin: 2 }} variant="outlined" label="Password" type="string" name="email" value={password} onChange={handleChange} ></TextField>
