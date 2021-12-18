@@ -50,7 +50,7 @@ class Login extends React.Component{
     render(){
         return (
             <Grid sx={{display: "flex", justifyContent: "center", alignItems: "center"}}>
-            <Grid sx={{ position: "absolute", backgroundColor: "white", borderRadius: 5, padding: 2,width:"auto" }} item>
+            <Grid sx={{ position: "absolute", backgroundColor: "white", borderRadius: 5, padding: 2,width:"auto" ,maxWidth:"300"}} item>
             <form  onSubmit={this.handleSubmit} >
                 
                 <Typography sx={{fontSize:24,fontWeight:"bold"}}>Login</Typography>
