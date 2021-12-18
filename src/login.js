@@ -51,7 +51,7 @@ class Login extends React.Component{
         return (
             <Grid sx={{overflow:"hidden",}}>
             <form  onSubmit={this.handleSubmit} >
-                <Grid sx={{margin:"5%",position:"absolute",backgroundColor:"white",width:300,borderRadius:5,padding:2,}} item>
+                <Grid sx={{margin:"5%",position:"absolute",backgroundColor:"white",width:"20%",borderRadius:5,padding:2,}} item>
                 <Typography sx={{fontSize:24,fontWeight:"bold"}}>Login</Typography>
                  <TextField size="small" sx={{ margin: 2 }} variant="outlined" label="Email" type="string" name="email" value={this.state.email}  onChange={this.handleChange} ></TextField>
                  <TextField size="small" sx={{ margin: 2 }} variant="outlined" label="Password" type="password" name="password" value={this.state.password}  onChange={this.handleChange} ></TextField>
