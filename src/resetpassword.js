@@ -46,7 +46,8 @@ let navigate=useNavigate ()
 
     }
     return (
-        <Grid sx={{ overflow: "hidden", }}>
+        <Grid sx={{  display: "flex", justifyContent: "center", alignItems: "center"  }}>
+         <Grid sx={{position: "absolute", backgroundColor: "white", borderRadius: 5, padding: 2,width:"auto" ,maxWidth:300 }} item>
             <form onSubmit={handleSubmit} >
                 <Grid sx={{ margin: "5%", position: "absolute", backgroundColor: "white", width: 500, borderRadius: 5, padding: 2, }} item>
                     <Typography sx={{ fontSize: 24, fontWeight: "bold" }}>Reset password</Typography>
@@ -60,8 +61,9 @@ let navigate=useNavigate ()
 
                     </Box>
 
-                </Grid>
+                
             </form>
+</Grid>
             <img style={{ height: "auto", width: "100%" }} alt={"reset"} src={login} />
         </Grid>
     )
