@@ -30,12 +30,12 @@ if(token){
     }
     useEffect(()=>{
         getOrder()
-    },)
+    },[])
 
 return(
     <>
     <Menubar/>
-    <Box sx={{ display: "flex", }}>
+    <Box sx={{ display: "flex",justifyContent:"center" }}>
         <Box sx={{ display: "flex", justifyContent: "center" }}>
             <Card sx={{ width: 250, height: "max-content" }}>
 
@@ -43,12 +43,12 @@ return(
                     <AccountCircleIcon sx={{ fontSize: 64 }} />
                 </CardMedia>
 
-                <CardContent sx={{ display: "block",  }}>
+                <CardContent sx={{ textAlign:"center" }}>
                     <Typography gutterBottom variant="h5" component="div">
                         {data.name}
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary">{data.email}</Typography>
-                    <Typography variant="body2" color="text.secondary">{data.contact}</Typography>
+                    </Typography><br/>
+                    <Typography variant="body2" color="text.primary">{data.email}</Typography>
+                    <Typography variant="body2" color="text.primary">{data.contact}</Typography>
 
 
                 </CardContent>
@@ -62,11 +62,11 @@ return(
                 <TableContainer component={Paper}>
                     <Table sx={{ minWidth: 700 }} aria-label="customized table">
                         <TableHead>
-                            <TableRow>
-                                <TableCell align="center">Name</TableCell>
+                            <TableRow sx={{bgcolor:"gainsboro"}}>
+                                <TableCell align="center" sx={{fontWeight:"bold",fontSize:20}}>Name</TableCell>
 
-                                <TableCell align="center">Quantity</TableCell>
-                                <TableCell align="center">Variant</TableCell>
+                                <TableCell align="center" sx={{fontWeight:"bold",fontSize:20}}>Quantity</TableCell>
+                                <TableCell align="center" sx={{fontWeight:"bold",fontSize:20}}>Variant</TableCell>
 
                             </TableRow>
                         </TableHead>

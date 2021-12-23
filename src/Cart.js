@@ -9,7 +9,7 @@ import {  useNavigate } from "react-router";
 
 function Cart(){
     const [cart,setCart]=useState([])
-    const  [price,setPrice]=useState([])
+    const  [price,setPrice]=useState([0])
     const navigate=useNavigate()
   const token=localStorage.getItem("clone")
    const getItem=async()=>{
@@ -23,7 +23,7 @@ function Cart(){
        let prices=[...price]
        prices=data.cart.map(item=>item.price)
         setPrice(prices)
-         
+        
    }
    else{
        navigate("/login")
@@ -31,16 +31,16 @@ function Cart(){
 
 }
 const removeCart=async(index)=>{
-  
+    
     const decoded=jwt.decode(token)
     if(Date.now() < decoded.exp * 1000){
         let carts=[...cart]
     carts.splice(index,1)
     setCart(carts)
-    const {data}= await axios.patch(`${Url.backendUrl}/cart/edit/${decoded.user._id}`,{
+     await axios.patch(`${Url.backendUrl}/cart/edit/${decoded.user._id}`,{
         cart:carts
     },{headers:{ clone:token}})
-    console.log(data)
+    
     }
     else{
         navigate.push("/login")
@@ -49,7 +49,7 @@ const removeCart=async(index)=>{
 
 }
 const orderNow=async()=>{
-      alert("Your Order placed now...!Please check your profile")
+    alert("Your Order placed now...!Please check your profile")
     const decoded=jwt.decode(token)
     console.log(decoded)
     if(Date.now() < decoded.exp * 1000){
@@ -73,7 +73,7 @@ const orderNow=async()=>{
  
    useEffect(()=>{
        getItem()
-   },)
+   },[cart,price])
 
 return(
     <>
@@ -83,11 +83,11 @@ return(
              
                 <TableHead>
                     <TableRow>
-                    <TableCell align="center">List.No</TableCell>
-                        <TableCell align="center">Name</TableCell>
-                        <TableCell align="center">Quantity</TableCell>
-                        <TableCell align="center">Variant</TableCell>
-                        <TableCell align="center">Price</TableCell>
+                    <TableCell align="center" sx={{fontWeight:"bold",fontSize:20}}>List.No</TableCell>
+                        <TableCell align="center" sx={{fontWeight:"bold",fontSize:20}}>Name</TableCell>
+                        <TableCell align="center" sx={{fontWeight:"bold",fontSize:20}}>Quantity</TableCell>
+                        <TableCell align="center" sx={{fontWeight:"bold",fontSize:20}}>Variant</TableCell>
+                        <TableCell align="center" sx={{fontWeight:"bold",fontSize:20}}>Price</TableCell>
                      
                         <TableCell align="center">Remove</TableCell>
                         
@@ -106,16 +106,16 @@ return(
                             <TableCell align="center"><Button onClick={()=>removeCart(index)}>Remove  </Button></TableCell>
                         </TableRow>
                     ))}
-                    <TableRow>
+                    <TableRow sx={{bgcolor:"gainsboro"}}>
                         <TableCell align="center"></TableCell>
-                        <TableCell align="center"></TableCell>
+                        <TableCell align="center">Total Quantity</TableCell>
                       
                         <TableCell align="center">{cart.length}</TableCell>
                         
-                        <TableCell align="center">Total</TableCell>
+                        <TableCell align="center">Total Price</TableCell>
                         <TableCell align="center">{price.reduce((a,b)=>a+b,0)}</TableCell>
 
-                        <TableCell align="center"><Button onClick={orderNow}>Order Now  </Button></TableCell>                        
+                        <TableCell align="center"><Button sx={{color:"black",}} variant="outlined" color="success" onClick={orderNow}>Order Now  </Button></TableCell>                        
                     </TableRow>
                 </TableBody>
             </Table>
