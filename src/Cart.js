@@ -31,7 +31,7 @@ function Cart(){
 
 }
 const removeCart=async(index)=>{
-    alert("Your Order placed now...!Please check your profile")
+  
     const decoded=jwt.decode(token)
     if(Date.now() < decoded.exp * 1000){
         let carts=[...cart]
@@ -49,6 +49,7 @@ const removeCart=async(index)=>{
 
 }
 const orderNow=async()=>{
+      alert("Your Order placed now...!Please check your profile")
     const decoded=jwt.decode(token)
     console.log(decoded)
     if(Date.now() < decoded.exp * 1000){
