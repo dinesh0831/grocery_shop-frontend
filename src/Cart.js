@@ -62,7 +62,7 @@ const orderNow=async()=>{
        },{headers:{ clone:token}})
        console.log(data)
        setCart([])
-       setPrice(0)
+       setPrice([0])
     }
     else{
         navigate.push("/login")
