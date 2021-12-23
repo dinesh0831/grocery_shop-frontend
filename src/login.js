@@ -54,7 +54,7 @@ class Login extends React.Component {
 
                         <Typography sx={{ fontSize: 24, fontWeight: "bold" }}>Login</Typography>
                         <TextField size="small" sx={{ margin: 2 }} variant="outlined" label="Email" type="string" name="email" value={this.state.email} onChange={this.handleChange} ></TextField><br/>
-                        <TextField size="small" sx={{ margin: 2 }} variant="outlined" label="Password" type="string" name="password" value={this.state.password} onChange={this.handleChange} ></TextField>
+                        <TextField size="small" sx={{ margin: 2 }} variant="outlined" label="Password" type="password" name="password" value={this.state.password} onChange={this.handleChange} ></TextField>
                        
                         
                         <Box sx={{ display: "flex", justifyContent: "center" }}>
