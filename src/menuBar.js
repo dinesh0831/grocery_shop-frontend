@@ -18,7 +18,7 @@ import jwt from "jsonwebtoken"
 import HomeIcon from '@mui/icons-material/Home';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import LoginIcon from '@mui/icons-material/Login';
-import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
+
 import PostAddIcon from '@mui/icons-material/PostAdd';
 
 function Menubar() {
