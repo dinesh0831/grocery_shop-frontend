@@ -53,7 +53,7 @@ const navigate=useNavigate()
 
         useEffect(()=>{
             getUser()
-        },[user])
+        },)
     
    
 
@@ -93,16 +93,8 @@ const navigate=useNavigate()
                        <HomeIcon/>
                     </ListItemIcon>
                     <ListItemText primary={"Home"} />
-                </ListItem>
-                
-                <ListItem button component={Link} to="/order">
-                    <ListItemIcon>
-                       <ShoppingBagIcon/>
-                    </ListItemIcon>
-                    <ListItemText primary={"Orders"} />
-                </ListItem>
-                
-                <ListItem button component={Link} to="/Mycart">
+                </ListItem>                               
+                <ListItem button component={Link} to="//cart">
                     <ListItemIcon>
                        <ShoppingCartSharpIcon/>
                     </ListItemIcon>
@@ -148,18 +140,6 @@ const navigate=useNavigate()
                 <IconButton component={Link} to="/cart" sx={{ margin: 3 }}><Badge badgeContent={cart}   color="success" size="small"  ><ShoppingCartSharpIcon sx={{ fontSize: 24, color: "white", }} /></Badge></IconButton>
 
             </Box>
-
-            <>
-                <Button onClick={toggleDrawer("left", true)}><MenuIcon sx={{ fontSize: 24, color: "white", }} /></Button>
-                <SwipeableDrawer
-                    anchor={"left"}
-                    open={state["left"]}
-                    onClose={toggleDrawer("left", false)}
-                    onOpen={toggleDrawer("left", true)}
-                >
-                    {list("left")}
-                </SwipeableDrawer>
-            </>
 
         </div>
 

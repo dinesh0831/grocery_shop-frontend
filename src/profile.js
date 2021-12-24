@@ -30,7 +30,7 @@ if(token){
     }
     useEffect(()=>{
         getOrder()
-    })
+    },[])
 
 return(
     <>
@@ -63,10 +63,12 @@ return(
                     <Table sx={{ minWidth: 700 }} aria-label="customized table">
                         <TableHead>
                             <TableRow sx={{bgcolor:"gainsboro"}}>
+                                <TableCell align="center" sx={{fontWeight:"bold",fontSize:20}}>List</TableCell>
                                 <TableCell align="center" sx={{fontWeight:"bold",fontSize:20}}>Name</TableCell>
 
                                 <TableCell align="center" sx={{fontWeight:"bold",fontSize:20}}>Quantity</TableCell>
                                 <TableCell align="center" sx={{fontWeight:"bold",fontSize:20}}>Variant</TableCell>
+
 
                             </TableRow>
                         </TableHead>
@@ -79,6 +81,10 @@ return(
                                         
                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                             >
+                                <TableCell component="th" scope="row" align="center">
+                                  {index+1}.
+                                </TableCell>
+
                                 <TableCell component="th" scope="row" align="center">
                                   {item.name}
                                 </TableCell>

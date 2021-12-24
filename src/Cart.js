@@ -6,19 +6,65 @@ import {Url } from "./backend"
 
 import Menubar from "./menuBar"
 import {  useNavigate } from "react-router";
+const loadScript=(src)=>{
+    return new Promise(resolve=>{
+        const script=document.createElement("script")
+        script.src=src
+        
+        script.onload=()=>{resolve(true)
+        }
+        script.onerror=()=>{
+            resolve(false)
+        }
+        document.body.appendChild(script)
+    })
+
+    }
+
 
 function Cart(){
     const [cart,setCart]=useState([])
     const  [price,setPrice]=useState([0])
     const navigate=useNavigate()
   const token=localStorage.getItem("clone")
+  const displayRazorpay=async(data)=>{
+    const decoded=jwt.decode(token)
+    console.log(decoded)
+    const res= await loadScript("https://checkout.razorpay.com/v1/checkout.js")
+    if (!res){
+        alert("Razorpay SDK failed to load")
+        return
+    }
+    console.log(data)
+    var options = {
+        key: "rzp_test_CJysw9ND9WCm9G", // Enter the Key ID generated from the Dashboard
+        amount: data.amount.toString(), // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+        currency: data.currency,
+        name: "Grocery Shop",
+        description: "Thank for purchase! Come Again",
+        image: "https://example.com/your_logo",
+        order_id: data.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+        handler: function (response){
+            alert(response.razorpay_payment_id);
+            alert(response.razorpay_order_id);
+            alert(response.razorpay_signature)
+        },
+        prefill: {
+            name: decoded.user.name,
+            email: decoded.user.email,
+            contact: decoded.user.mobileno
+        }
+    };
+    var paymentObject = new window.Razorpay(options);
+    paymentObject.open();
+  }
    const getItem=async()=>{
        const decoded=jwt.decode(token)
        if (Date.now() < decoded.exp * 1000)
        {
 
        const {data}=await axios.get(`${Url.backendUrl}/cart/${decoded.user._id}`,{headers:{ clone:token}})
-       console.log(data)
+       
        setCart(data.cart)
        let prices=[...price]
        prices=data.cart.map(item=>item.price)
@@ -48,8 +94,10 @@ const removeCart=async(index)=>{
    
 
 }
+
+
 const orderNow=async()=>{
-    alert("Your Order placed now...!Please check your profile")
+   
     const decoded=jwt.decode(token)
     console.log(decoded)
     if(Date.now() < decoded.exp * 1000){
@@ -59,9 +107,11 @@ const orderNow=async()=>{
            name:decoded.user.name,
            address:decoded.user.address,
            user:decoded.user._id,
-           order:cart
+           order:cart,
+           amount:price.reduce((a,b)=>a+b,0)
        },{headers:{ clone:token}})
        console.log(data)
+       displayRazorpay(data)
        setCart([])
        setPrice([0])
     }
@@ -89,7 +139,7 @@ return(
                         <TableCell align="center" sx={{fontWeight:"bold",fontSize:20}}>Variant</TableCell>
                         <TableCell align="center" sx={{fontWeight:"bold",fontSize:20}}>Price</TableCell>
                      
-                        <TableCell align="center">Remove</TableCell>
+                        <TableCell align="center" sx={{fontWeight:"bold",fontSize:20}}>Remove</TableCell>
                         
                       
                     </TableRow>
@@ -107,14 +157,15 @@ return(
                         </TableRow>
                     ))}
                     <TableRow sx={{bgcolor:"gainsboro"}}>
-                        <TableCell align="center"></TableCell>
+                    <TableCell align="center"></TableCell>
                         <TableCell align="center">Total Quantity</TableCell>
                       
                         <TableCell align="center">{cart.length}</TableCell>
                         
                         <TableCell align="center">Total Price</TableCell>
                         <TableCell align="center">{price.reduce((a,b)=>a+b,0)}</TableCell>
-
+                        
+                        
                         <TableCell align="center"><Button sx={{color:"black",}} variant="outlined" color="success" onClick={orderNow}>Order Now  </Button></TableCell>                        
                     </TableRow>
                 </TableBody>
