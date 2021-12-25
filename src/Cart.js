@@ -27,7 +27,9 @@ function Cart(){
     const  [price,setPrice]=useState([0])
     const navigate=useNavigate()
   const token=localStorage.getItem("clone")
-  const displayRazorpay=async(data)=>{
+
+
+  const displayRazorpay=async()=>{
     const decoded=jwt.decode(token)
     console.log(decoded)
     const res= await loadScript("https://checkout.razorpay.com/v1/checkout.js")
@@ -35,35 +37,43 @@ function Cart(){
         alert("Razorpay SDK failed to load")
         return
     }
-    console.log(data)
+   
+    const {data}=await axios.post(`${Url.backendUrl}/order/razorPay`,{amount:price.reduce((a,b)=>a+b,0)
+    },{headers:{clone:token}})
+
     var options = {
         key: "rzp_test_CJysw9ND9WCm9G", // Enter the Key ID generated from the Dashboard
         amount: data.amount.toString(), // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
         currency: data.currency,
         name: "Grocery Shop",
         description: "Thank for purchase! Come Again",
-        image: "https://example.com/your_logo",
+        image: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fworldvectorlogo.com%2Flogo%2Freact-1&psig=AOvVaw2TuAQuiK2TKBDAVSMrlyyD&ust=1640435963656000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCJjCi6u6_PQCFQAAAAAdAAAAABAD",
         order_id: data.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
         handler: function (response){
             alert(response.razorpay_payment_id);
             alert(response.razorpay_order_id);
-            alert(response.razorpay_signature)
+            alert(response.razorpay_signature);
+            orderNow()
         },
         prefill: {
             name: decoded.user.name,
             email: decoded.user.email,
             contact: decoded.user.mobileno
-        }
+        },
+        
     };
+    
     var paymentObject = new window.Razorpay(options);
+
     paymentObject.open();
+    
   }
    const getItem=async()=>{
        const decoded=jwt.decode(token)
        if (Date.now() < decoded.exp * 1000)
        {
 
-       const {data}=await axios.get(`${Url.backendUrl}/cart/${decoded.user._id}`,{headers:{ clone:token}})
+       const {data}=await axios.get(`${Url.backendUrl}/cart/${decoded.user._id}`,{headers:{clone:token}})
        
        setCart(data.cart)
        let prices=[...price]
@@ -85,7 +95,7 @@ const removeCart=async(index)=>{
     setCart(carts)
      await axios.patch(`${Url.backendUrl}/cart/edit/${decoded.user._id}`,{
         cart:carts
-    },{headers:{ clone:token}})
+    },{headers:{clone:token}})
     
     }
     else{
@@ -109,11 +119,12 @@ const orderNow=async()=>{
            user:decoded.user._id,
            order:cart,
            amount:price.reduce((a,b)=>a+b,0)
-       },{headers:{ clone:token}})
+       },{headers:{clone:token}})
        console.log(data)
-       displayRazorpay(data)
+      
        setCart([])
        setPrice([0])
+       alert("your order successfully done")
     }
     else{
         navigate.push("/login")
@@ -166,7 +177,7 @@ return(
                         <TableCell align="center">{price.reduce((a,b)=>a+b,0)}</TableCell>
                         
                         
-                        <TableCell align="center"><Button sx={{color:"black",}} variant="outlined" color="success" onClick={orderNow}>Order Now  </Button></TableCell>                        
+                        <TableCell align="center"><Button sx={{color:"black",}}  disabled={cart.length===0} variant="outlined" color="success" onClick={displayRazorpay}>Order Now  </Button></TableCell>                        
                     </TableRow>
                 </TableBody>
             </Table>
