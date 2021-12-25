@@ -53,7 +53,7 @@ function Cart(){
             alert(response.razorpay_payment_id);
             alert(response.razorpay_order_id);
             alert(response.razorpay_signature);
-            orderNow()
+           
         },
         prefill: {
             name: decoded.user.name,
@@ -66,6 +66,7 @@ function Cart(){
     var paymentObject = new window.Razorpay(options);
 
     paymentObject.open();
+       orderNow()
     
   }
    const getItem=async()=>{
