@@ -47,7 +47,7 @@ function Cart(){
         currency: data.currency,
         name: "Grocery Shop",
         description: "Thank for purchase! Come Again",
-        image: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fworldvectorlogo.com%2Flogo%2Freact-1&psig=AOvVaw2TuAQuiK2TKBDAVSMrlyyD&ust=1640435963656000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCJjCi6u6_PQCFQAAAAAdAAAAABAD",
+        image: "https://www.vectorlogo.zone/logos/reactjs/reactjs-icon.svg",
         order_id: data.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
         handler: function (response){
             alert(response.razorpay_payment_id);
