@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { Box, Typography, Card, CardMedia, CardContent, Paper, Table, TableBody, TableContainer, TableHead, TableRow, TableCell, } from "@mui/material"
 import { AccordionSummary, Accordion, AccordionDetails } from "@mui/material"
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
@@ -12,7 +12,7 @@ function Profile() {
     const [orders, setOrders] = useState([])
     const [data, setData] = useState({})
     const navigate = useNavigate()
-    const getOrder = async () => {
+    const getOrder = useCallback( async () => {
         const token = localStorage.getItem("clone")
         if (token) {
             const decoded = jwt.decode(token)
@@ -30,10 +30,10 @@ function Profile() {
             navigate("/login")
         }
 
-    }
+    },[navigate])
     useEffect(() => {
         getOrder()
-    },)
+    },[getOrder])
     const [expanded, setExpanded] = useState(false);
 
     const handleChange = (panel) => (event, isExpanded) => {
@@ -43,7 +43,7 @@ function Profile() {
     return (
         <>
             <Menubar />
-            <Box sx={{ display: "flex", justifyContent: "center", marginTop: 10 }}>
+            <Box sx={{ display: "flex", justifyContent: "center", marginTop: 10,width:"100%" }}>
                 <Box sx={{ display: "flex", justifyContent: "center", }}>
                     <Card sx={{ width: 250, height: "max-content" }}>
 
@@ -74,9 +74,16 @@ function Profile() {
                                         expandIcon={<ExpandMoreIcon />}
                                         aria-controls="panel1bh-content"
                                         id="panel1bh-header"
+                                        
                                     >
                                         <Typography sx={{ width: '50%', flexShrink: 0 }}>
                                             Order Id:{item._id}
+                                        </Typography>
+                                        <Typography sx={{ marginRight:2}}>
+                                        Ordered Name:{item.name}
+                                        </Typography>
+                                        <Typography sx={{  }}>
+                                        Mobile No:{item.contact}
                                         </Typography>
                                        
                                     </AccordionSummary>
