@@ -242,7 +242,7 @@ const orderNow=async()=>{
            amount:price.reduce((a,b)=>a+b,0)
        },{headers:{clone:token}})
        console.log(data)
-      
+      setCartss(0)
        setCart([])
        setPrice([0])
        alert("your order successfully done")
