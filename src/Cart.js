@@ -245,7 +245,7 @@ const orderNow=async()=>{
       setCartss(0)
        setCart([])
        setPrice([0])
-       alert("your order successfully done")
+     
     }
     else{
         navigate.push("/login")
