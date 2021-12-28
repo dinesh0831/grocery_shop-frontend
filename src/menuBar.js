@@ -94,7 +94,7 @@ const navigate=useNavigate()
                     </ListItemIcon>
                     <ListItemText primary={"Home"} />
                 </ListItem>                               
-                <ListItem button component={Link} to="//cart">
+                <ListItem button component={Link} to="/cart">
                     <ListItemIcon>
                        <ShoppingCartSharpIcon/>
                     </ListItemIcon>
