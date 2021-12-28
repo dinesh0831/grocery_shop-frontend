@@ -12,8 +12,8 @@ import ListItemText from '@mui/material/ListItemText';
 import List from '@mui/material/List';
 import Box from '@mui/material/Box';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
-
-
+import { ToastContainer,toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css"
 import MenuIcon from '@mui/icons-material/Menu';
 import ShoppingCartSharpIcon from '@mui/icons-material/ShoppingCartSharp';
 import { Link,useNavigate } from "react-router-dom"
@@ -197,7 +197,7 @@ const list = (anchor) => (
                 </ListItemIcon>
                 <ListItemText primary={"Home"} />
             </ListItem>                               
-            <ListItem button component={Link} to="//cart">
+            <ListItem button component={Link} to="/cart">
                 <ListItemIcon>
                    <ShoppingCartSharpIcon/>
                 </ListItemIcon>
@@ -242,10 +242,11 @@ const orderNow=async()=>{
            amount:price.reduce((a,b)=>a+b,0)
        },{headers:{clone:token}})
        console.log(data)
-      setCartss(0)
+       toast.success("Your order Placed")
+       setCartss(0)
        setCart([])
        setPrice([0])
-     
+       
     }
     else{
         navigate.push("/login")
@@ -321,6 +322,7 @@ return(
                 </TableBody>
             </Table>
         </TableContainer>
+        <ToastContainer/>
         </>
 )
 }
